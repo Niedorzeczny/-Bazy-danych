@@ -1,0 +1,12 @@
+show databases;
+use ksiegarnia;
+select ksiazki.tytul, count(zamowienia.idzamowienia) as liczbazamowien from ksiazki join zamowienia on ksiazki.idksiazki = zamowienia.idksiazki group by ksiazki.tytul having count(zamowienia.idzamowienia)>1;
+select klienci.imie, klienci.nazwisko from klienci join zamowienia where zamowienia.idzamowienia is null;
+select klienci.imie, klienci.nazwisko, klienci.idklienta from klienci join zamowienia on klienci.idklienta = zamowienia.idklienta join ksiazki on ksiazki.idksiazki = zamowienia.idksiazki where ksiazki.cena > 50;
+select ksiazki.tytul, count(zamowienia.idzamowienia) as liczbazamowien from zamowienia join ksiazki on ksiazki.idksiazki = zamowienia.idksiazki group by ksiazki.tytul order by liczbazamowien desc; 
+select ksiazki.tytul, count(zamowienia.idzamowienia) from zamowienia join ksiazki on zamowienia.idksiazki = ksiazki.idksiazki join klienci on zamowienia.idklienta = klienci.idklienta group by ksiazki.tytul having count(zamowienia.idzamowienia)>1;
+select klienci.imie, klienci.nazwisko, klienci.idklienta from klienci join zamowienia on klienci.idklienta = zamowienia.idklienta join ksiazki on ksiazki.idksiazki = zamowienia.idksiazki where ksiazki.cena > 100;
+select ksiazki.tytul, count(zamowienia.idzamowienia) as liczbazamowien from ksiazki join zamowienia on zamowienia.idksiazki = ksiazki.idksiazki group by ksiazki.tytul order by liczbazamowien desc limit 1;
+select klienci.imie, klienci.nazwisko, count(zamowienia.idzamowienia) as liczbazamowien from klienci join zamowienia on klienci.idklienta = zamowienia.idklienta group by klienci.imie, klienci.nazwisko order by liczbazamowien desc limit 1;
+select zamowienia.idzamowienia, zamowienia.data from zamowienia order by zamowienia.data;
+select klienci.imie, klienci.nazwisko from klienci join zamowienia on klienci.idklienta = zamowienia.idklienta where zamowienia.idzamowienia is null;
