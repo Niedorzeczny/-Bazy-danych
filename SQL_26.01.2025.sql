@@ -1,0 +1,18 @@
+show databases;
+use mydatabase2;
+select * from uzytkownicy join produkty join zamowienia;
+select uzytkownicy.imie, uzytkownicy.nazwisko, zamowienia.data_zamowienia, zamowienia.ilosc from uzytkownicy join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id;
+select uzytkownicy.imie, uzytkownicy.nazwisko, produkty.kategoria from produkty join uzytkownicy join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id and zamowienia.id = produkty.id where produkty.kategoria="Elektronika";  
+select produkty.nazwa, zamowienia.data_zamowienia, zamowienia.ilosc from produkty join zamowienia  on zamowienia.id = produkty.id; 
+select * from zamowienia where ilosc >=1;
+select produkty.nazwa, produkty.cena, zamowienia.produkt_id, zamowienia.id as id_zamowienia from produkty join zamowienia on zamowienia.id = produkty.id;
+select uzytkownicy.imie, uzytkownicy.nazwisko, produkty.nazwa, zamowienia.produkt_id from uzytkownicy join produkty join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id and zamowienia.id = produkty.id;
+select uzytkownicy.imie, uzytkownicy.nazwisko, zamowienia.data_zamowienia from uzytkownicy join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id;
+select uzytkownicy.imie, uzytkownicy.nazwisko, produkty.nazwa, zamowienia.data_zamowienia from uzytkownicy join produkty join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id and zamowienia.id = produkty.id order by data_zamowienia desc;
+select produkty.nazwa, zamowienia.data_zamowienia from produkty join zamowienia on zamowienia.id = produkty.id where data_zamowienia="2025-01-01";
+select uzytkownicy.imie, uzytkownicy.nazwisko, produkty.nazwa, produkty.kategoria from uzytkownicy join produkty join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id and zamowienia.id = produkty.id where kategoria="Meble";
+select produkty.nazwa, zamowienia.ilosc from produkty join zamowienia on zamowienia.id = produkty.id where ilosc >3;
+select uzytkownicy.imie, uzytkownicy.nazwisko, zamowienia.data_zamowienia from uzytkownicy join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id where data_zamowienia like "2025%";
+select produkty.nazwa, produkty.kategoria, zamowienia.data_zamowienia, zamowienia.ilosc from produkty join zamowienia  on zamowienia.id = produkty.id where kategoria="Dom";
+select uzytkownicy.imie, uzytkownicy.nazwisko, uzytkownicy.wiek, produkty.nazwa from uzytkownicy join produkty join zamowienia on uzytkownicy.id = zamowienia.uzytkownik_id and zamowienia.id = produkty.id where wiek>30;
+select produkty.nazwa, SUM(Zamowienia.ilosc) as total_ilosc from produkty join zamowienia on produkty.id = zamowienia.produkt_id group by produkty.nazwa having total_ilosc >3;
