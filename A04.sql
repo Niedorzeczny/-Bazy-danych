@@ -1,0 +1,16 @@
+show databases;
+select * from SimpleTable;
+set sql_safe_updates=0;
+select * from SimpleTable where Name like 'J%';
+select * from SimpleTable order by Joindate asc;
+select count(*) from SimpleTable where Age>30;
+update SimpleTable set age='34' where ID=11;
+delete from SimpleTable where Age=20;
+select round(avg(Age),0) from SimpleTable ;
+update SimpleTable set email='john.doe@newdomain.com' where ID=1;
+select * from SimpleTable where Age between '23' and '35';
+select * from SimpleTable order by Age desc;
+select * from SimpleTable where name like 'Alice%' or name like 'Bob%';
+select count(*) from SimpleTable where JoinDate <'2023-01-01';
+select * from SimpleTable where email like 'alice%';
+select count(*) from SimpleTable where age>30 and email not like '%example%';
